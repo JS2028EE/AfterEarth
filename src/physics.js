@@ -1,0 +1,2 @@
+export class PhysicsBody{constructor(){this.velocity={x:0,y:0,z:0};this.grounded=false;this.fallStart=0}step(position,dt,groundY=0){if(position.y>groundY){this.velocity.y-=9.81*dt;position.y+=this.velocity.y*dt;this.grounded=false}else{if(this.velocity.y< -15)this.onImpact?.(Math.abs(this.velocity.y));position.y=groundY;this.velocity.y=0;this.grounded=true}}jump(force=5){if(this.grounded)this.velocity.y=force}}
+export function clampToWorld(position,bounds=190){position.x=Math.max(-bounds,Math.min(bounds,position.x));position.z=Math.max(-bounds,Math.min(bounds,position.z))}
